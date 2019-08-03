@@ -1,7 +1,7 @@
 from six.moves import cPickle
 from PIL import Image
 import numpy as np
-import matplotlib.pyplot as plt
+import os
 f = open("cifar-10-batches-py/data_batch_1", 'rb')
 datadict = cPickle.load(f,encoding='latin1')
 f.close()
@@ -9,9 +9,9 @@ x = datadict["data"]
 y = datadict['labels']
 
 #%%
-print(len(x[0]))
+# print(len(x[0]))
 # print(y)
-arr = np.array(x[1])
+arr = np.array(x[2])
 print(y[0])
 print(arr[0], arr[1024], arr[2048])
 arr = arr.reshape((3, 32, 32))
@@ -29,10 +29,10 @@ image = Image.fromarray(img)
 
 i = 10
 while i < 95:
-    image.save(str(i)+'.jpg', "JPEG", quality=i, optimize=True, progressive=True)
-
+    image.save(str(i)+'.jpg', "JPEG", quality=i, optimize=False)
+    size = os.path.getsize(str(i)+'.jpg') * 8
+    print(size / (32*32*3*8))
     i += 10
-image.show()
 
 
 
