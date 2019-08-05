@@ -26,13 +26,17 @@ im = np.array(im)
 img = np.array(im)
 # print(image.shape)
 image = Image.fromarray(img)
+#%%
+# i = 10
+# # while i < 95:
+# #     image.save(str(i)+'.jpg', "JPEG", quality=i, optimize=False)
+# #     size = os.path.getsize(str(i)+'.jpg') * 8
+# #     print(size / (32*32*3*8))
+# #     i += 10
 
-i = 10
-while i < 95:
-    image.save(str(i)+'.jpg', "JPEG", quality=i, optimize=False)
-    size = os.path.getsize(str(i)+'.jpg') * 8
-    print(size / (32*32*3*8))
-    i += 10
-
+image.save('a.jpg', 'JPEG', quality=70)
+image.save('a.png')
+a = os.path.getsize('a.jpg')
+print(a/(32*32*3))
 
 
